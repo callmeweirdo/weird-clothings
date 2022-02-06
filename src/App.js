@@ -1,12 +1,29 @@
 import './pages/homepage/homepage.styles.scss';
-import HomePage from './pages/homepage/HomePage.component'
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
+
+// !components import
+import HomePage from './pages/homepage/HomePage.component';
+
+const HatsPage = () =>{
+  return(
+    <div>
+      <h1>HTAS PAGE</h1>
+    </div>
+  )
+}
+
+
+function App() { 
   return (
     <div className="App">
-      <HomePage />
+      <Routes>
+        <Route   path='/' element={<HomePage />} />
+        <Route   path='/hats' element={<HatsPage />} />
+      </ Routes >
     </div>
   );
+
 }
 
 export default App;

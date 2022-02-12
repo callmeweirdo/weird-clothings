@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import './sign-in.styles.scss';
 
 // ! component import 
-import SignInAndSignUpPage from "../../pages/sing-in-and-sign-up.component";
+// import SignInAndSignUpPage from "../../pages/sing-in-and-sign-up.component";
 import FormInput from '../form-input/form-input.component';
 import CustomButton from "../custom-button/custom-button.component";
 

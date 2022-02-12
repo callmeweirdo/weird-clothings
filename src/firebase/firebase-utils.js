@@ -45,8 +45,6 @@ export const createUserProfileDocument = async (userAuth, addittionalData) => {
 
     return userRef;
 
-
-    
 }
 
 

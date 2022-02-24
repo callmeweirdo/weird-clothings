@@ -1,25 +1,24 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
 
-// ?styles import 
+// ?styles import
 import './header.styles.scss';
 
 // * svg assets import
-<<<<<<< HEAD
-import { ReactComponent as Logo} from '../../asstes/crown.svg'
-=======
-import { ReactComponent as Logo} from '../../asstes/crown.svg';
->>>>>>> 534f632 (added redux, implemented userReducer and userActions to header and app components)
+import { ReactComponent as Logo} from '../../assets/crown.svg';
 
 // ! components import
 import { Link } from 'react-router-dom';
 import {auth} from '../../firebase/firebase-utils';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import {selectCurrentUser} from '../../redux/user/user.selector';
 
-<<<<<<< HEAD
-=======
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 import {connect} from 'react-redux';
 
->>>>>>> 534f632 (added redux, implemented userReducer and userActions to header and app components)
-const Header = ({currentUser}) => {
+const Header = ({currentUser, hidden}) => {
     return(
     <div className='header'>
         <Link to="/" className='logo-container'>
@@ -28,25 +27,22 @@ const Header = ({currentUser}) => {
         <div className='options'>
             <Link to="/shop" className="option">SHOP</Link>
             <Link to="/contact" className="option">CONTACT</Link>
-
             {
                 currentUser ? 
                 <div className='options' onClick={ ()=> auth.signOut() } >SIGN OUT</div>
                 :
                 <Link className='option' to='/signin' >SIGN IN</Link>
             }
-
+            <CartIcon />
         </div>
+        {hidden ? null : <CartDropdown /> } 
     </div>
     )
 }
 
-<<<<<<< HEAD
-export default Header;
-=======
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
 })
 
 export default connect(mapStateToProps)(Header);
->>>>>>> 534f632 (added redux, implemented userReducer and userActions to header and app components)
